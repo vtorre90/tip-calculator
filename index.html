@@ -3,73 +3,83 @@
 <head>
 <!-- Required meta tags -->
 <meta charset='utf-8'>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <!-- Bootstrap CSS -->
  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous'>
+
  <!-- Google Fonts -->
  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="style.css">
- <link rel="preconnect" href="https://fonts.gstatic.com">
- <script src="main.js"></script>
-<title>Tic-Tac-Toe Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<title>Hello, world!</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- <h1>Hello, world!</h1> -->
+<!-- Optional JavaScript; choose one of the two! -->
+<!-- Option 1: Bootstrap Bundle with Popper -->
 
-    
-        <div class="container-fluid">
-            <div class="row vw-100 pt-2">
-                <div class="col-md-6 d-flex justify-content-around">
-                  <p>Player X: <span class="bg-dark text-white ps-2 pe-2" id="scoreX">0</span> partite vinte </p>  
+
+<div class="container">
+    <div class="row vh-100">
+        <div class="col-12 col-lg-8 mx-auto my-auto">
+            <div class="row bg-custom-white rounded-custom p-4">
+                <div class="col-12 col-lg-6 d-flex flex-column">
+                    <p>Bill</p>
+                    <input type="text" placeholder="€" value="0" class="input-bill">
+                    <p class="mt-4">Select Tip %</p>
+                    <div class="container">
+                        <row class="col-11 d-flex justify-content-between text-white flex-wrap">
+                            <div class="box bg-custom-main" id="five-tip">5%</div>
+                            <div class="box bg-custom-main" id="ten-tip">10%</div>
+                            <div class="box bg-custom-main" id="fiftheen-tip">15%</div>
+                            <div class="box bg-custom-main" id="twentyfive-tip">25%</div>
+                            <div class="box bg-custom-main" id="fifty-tip">50%</div>
+                            <div class="box text-grey-custom bg-custom-white" id='#custom'>Custom</div>
+                        </row>
+                    </div>
+                    <p class="mt-4">Number of people </p>
+                    <input type="text" placeholder="0" id="nr-persone" value="0">
                 </div>
-                <div class="col-md-6 d-flex justify-content-center">
-                    <p>Player O: <span class="bg-dark text-white ps-2 pe-2" id="scoreO">0</span> partite vinte  </p> 
+                <div class="col-12 col-lg-6 bg-custom-main rounded-custom p-4">
+                    <div class="row">
+
+                        <div class="col-6">
+                            <p class="text-white mb-0" >Total amount</p>
+                            <p class="text-grey-custom pt-0">/person</p>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="text-white mb-0 output-bill" id="totAmountOutput" value="0">0.00 €</h3>
+                        </div>
+
+                    </div>
+                    <div class="row mt-4">
+
+                        <div class="col-6">
+                            <p class="text-white mb-0">Tip amount</p>
+                            <p class="text-grey-custom pt-0">/person</p>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="text-white mb-0" id="totTipOutput">0.00 €</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn-reset" id="reset">
+                            RESET
+                        </button>
+                    </div>
+
+                 
                 </div>
             </div>
         </div>
-
-
-    <main class="background">
-        <section class="title">
-            <h1 class="">Tic Tac Tok</h1>
-        </section>
-
-        <section class="display">
-            Player <span class="display-player playerX">X</span> 's turn
-        </section>
-                
-        <section class="container">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-        </section>
-        <section class="display announcer hide"></section>
-        <section class="controls">
-            <button id="reset">Start a new game</button>
-        </section>
-    </main>
+    </div>
+</div>
 
 
 
-
-
-
-
-
-
-
-
-
-<!-- Optional JavaScript; choose one of the two! -->
-<!-- Option 1: Bootstrap Bundle with Popper -->
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous'></script>
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--<script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js' integrity='sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB' crossorigin='anonymous'></script>
@@ -77,6 +87,6 @@
 <!-- fontawesome -->
 <script src='https://kit.fontawesome.com/0b25227ef4.js'
 crossorigin='anonymous'></script>
-
+<script src="main.js"></script>
 </body>
 </html>
