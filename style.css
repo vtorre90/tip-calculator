@@ -1,82 +1,66 @@
+/* Strong cyan: hsl(172, 67%, 45%)  ### Neutral  - Very dark cyan: hsl(183, 100%, 15%) - Dark grayish cyan: hsl(186, 14%, 43%) - Dark grayish cyan: hsl(184, 14%, 56%) - Light grayish cyan: hsl(185, 41%, 84%) - Light grayish cyan: hsl(189, 41%, 97%) - White: hsl(0, 0%, 100%)  */
+
+:root{
+    --main: hsl(183, 100%, 15%);
+    --sec: hsl(172, 67%, 45%);
+    --third: hsl(186, 14%, 43%); 
+    --four: hsl(184, 14%, 56%);
+    --fifth: hsl(189, 41%, 97%);
+    --six:hsl(0, 0%, 100%);
+}
+
 *{
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Space Mono', monospace;
 }
 
-.background{
-    background-color: black;
-    height: 100vh;
-    padding-top: 1px;
+body{
+    background-color: hsl(185, 41%, 84%);
 }
 
-.display{
-    color: white;
-    font-size: 25px;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
+input{
+    background-color: hsl(189, 41%, 97%);
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
 }
 
-.hide{
-    display: none;
+.bg-custom-white{
+    background-color: hsl(0, 0%, 100%);
 }
 
-.container{
-    margin: 0 auto; 
-    display: grid;
-    grid-template-columns: 36% 36% 36%;
-    grid-template-rows: 36% 36% 36% ;
-    max-width: 300px;
+.bg-custom-main{
+    background-color: var(--main);
 }
 
-.tile{
-    border: 1px solid white;
-    min-width: 100px;
-    min-height: 100px;
+.rounded-custom{
+    border-radius: 20px;
+}
+
+.text-grey-custom{
+    color: var(--third);
+}
+/* @mixin placeholder-style {
+    color: lighten($base-color, 39%);
+} */
+
+.box{
+    width: 28%;
+    margin: 5px;
+    border-radius: 4px;
     display: flex;
     justify-content: center;
+    height: 32px;
     align-items: center;
-    font-size: 50px;
-    cursor: pointer;
+    box-shadow: 2px 2px 5px rgb(176, 176, 176);
 }
 
-.title{
+
+.btn-reset{
+    border:none;
+    margin: 0 auto;
+    border-radius: 12px;
+    background-color: var(--third);
     color: white;
-    text-align: center;
-    font-size: 40px;
-    margin-top: 10%;
-}
-
-
-
-.playerX{
-    color: #09c372;
-}
-
-.playerO{
-    color: #498AFB; 
-}
-
-.controls{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2em;
-}
-
-.restart {
-    background-color: #498AFB;
-}
-
-#reset{
-    background-color: crimson;
-    color: white;
-    padding: 8px;
-    border-radius: 8px;
-    border: none; 
-    font-size: 20px;
-    margin-left: 1em; 
-    cursor: pointer;
+    height: 50px;
+    margin-top: 35%;
 }
