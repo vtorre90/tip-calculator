@@ -1,7 +1,7 @@
 # tip-calculator-app
 
 
-I developed an app calculator designed to split the bill at the restaurant and calculate the tip!
+I developed an app calculator to split the bill at the restaurant and calculate the tip!
 
 With some imperfections UX and copy side ... but that's another story!
 
