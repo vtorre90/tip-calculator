@@ -1,156 +1,82 @@
-window.addEventListener('DOMContentLoaded', ()=> {
+let inputBill = document.querySelector('.input-bill');
+let outputBill = document.querySelector('.output-bill');
+let fiveTip = document.querySelector('#five-tip');
+let fitheen = document.querySelector('#fiftheen-tip')
+let tenTip = document.querySelector('#ten-tip');
+let twentyfiveTip = document.querySelector('#twentyfive-tip');
+let fiftyTip = document.querySelector ('#fifty-tip');
+let custom = document.querySelector ('#custom');
+let nrPersone = document.querySelector('#nr-persone');
+let totAmountOutput = document.querySelector('#totAmountOutput');
+let resetBtn = document.querySelector('#reset');
+let totTipOutput = document.querySelector('#totTipOutput');
 
-    const tiles = Array.from(document.querySelectorAll('.tile'));
-    const playerDisplay = document.querySelector('.display-player');
-    const resetButton = document.querySelector('#reset');
-    const announcer = document.querySelector('.announcer');
-    let scoreO = document.querySelector('#scoreO');
-    let scoreX = document.querySelector('#scoreX');
+//show tot sum
+function showBill(){
+    inputBill.addEventListener('input', ()=>{
+    outputBill.innerHTML = Number(inputBill.value);   
 
+    //show sum shared     
+        nrPersone.addEventListener('input', ()=>{
+                outputBill.innerHTML = ''
+                outputBill.innerHTML = inputBill.value / Number(nrPersone.value) + "€";
+        })
 
-    
-    let board = ['', '', '', '', '', '', '', '', ''];
-    let currentPlayer = 'X'; 
-    let isGameActive = true; 
+    //show sum tip        
+        fiveTip.addEventListener('click', ()=>{
+            totTipOutput.innerHTML = ''
+            let totBill = Number(inputBill.value)/100*5
+            let totPeople = Number(nrPersone.value)
+            totTipOutput.innerHTML =(totBill/totPeople).toFixed(2) + "€"
+        })
 
-    const PLAYERX_WON = 'PLAYERX_WON'; 
-    const PLAYERO_WON = 'PLAYERO_WON';
-    const TIE = 'TIE';
+        tenTip.addEventListener('click', ()=>{
+            totTipOutput.innerHTML = ''
+            let totBill = Number(inputBill.value)/100*10
+            let totPeople = Number(nrPersone.value)
+            totTipOutput.innerHTML =(totBill/totPeople).toFixed(2) + "€"
+        })
 
+        fitheen.addEventListener('click', ()=>{
+            totTipOutput.innerHTML = ''
+            let totBill = Number(inputBill.value)/100*15
+            let totPeople = Number(nrPersone.value)
+            totTipOutput.innerHTML =(totBill/totPeople).toFixed(2) + "€"
+        })
 
-    //winning conditions
-    const winningConditions = [
-        [0, 1, 2],
-        [3, 4, 5], 
-        [6, 7, 8],
-        [0, 3, 6], 
-        [1, 4, 7], 
-        [2, 5, 8], 
-        [0, 4, 8], 
-        [2, 4, 6] 
-    ];
+        twentyfiveTip.addEventListener('click', ()=>{
+            totTipOutput.innerHTML = ''
+            let totBill = Number(inputBill.value)/100*25
+            let totPeople = Number(nrPersone.value)
+            totTipOutput.innerHTML =(totBill/totPeople).toFixed(2) + "€"
+        })
 
+        fiftyTip.addEventListener('click', ()=>{
+            totTipOutput.innerHTML = ''
+            let totBill = Number(inputBill.value)/100*50
+            let totPeople = Number(nrPersone.value)
+            totTipOutput.innerHTML =(totBill/totPeople).toFixed(2) + "€"
+        })
 
-
-    function handleResultValidation(){
-        let roundWon = false; 
-        for(let i = 0; i <= 7; i++){
-            const winCondition = winningConditions[i];
-            const a = board[winCondition[0]];
-            const b = board[winCondition[1]];
-            const c = board[winCondition[2]];
-            if (a === '' || b === '' || c === ''){
-                continue; 
-            }
-            if (a === b && b === c){
-                roundWon =true;
-                break; 
-            }
-        }
-    
-        if (roundWon){
-            announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
-            isGameActive = false; 
-            return; 
-        }
-    
-        if (!board.includes(''))
-        announce(TIE);
-    }
-
-    const announce = (type) => {
-        switch(type){
-            case PLAYERO_WON:
-                announcer.innerHTML = 'Player <span class="playerO">O</span> Won';
-               
-                break; 
-            case PLAYERX_WON:
-                announcer.innerHTML = 'Player <span class="playerX">X</span> Won';
-               
-                break;
-            case TIE: 
-                announcer.innerText = 'Tie'; 
-        }
-        // showScore1();
-
-        announcer.classList.remove('hide');
-    };
-    
-    //check if user play empty o filled tiles
-    const isValidAction = (tile) =>{
-        if (tile.innerText === 'X' || tile.innerText === 'O'){
-            return false; 
-        }
-        return true; 
-    };
-
-    const updateBoard = (index) =>{
-        board[index] = currentPlayer;
-    }
-    
-    const changePlayer = () =>{
-        playerDisplay.classList.remove(`player${currentPlayer}`);
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; 
-        playerDisplay.innerText = currentPlayer; 
-        playerDisplay.classList.add(`player${currentPlayer}`);
-    }
-
-
-    //add current player after checking if it is a valid play
-    const userAction = (tile, index) =>{
-        if(isValidAction(tile) && isGameActive){
-            tile.innerText = currentPlayer;
-            tile.classList.add(`player${currentPlayer}`);
-            updateBoard(index);
-            handleResultValidation();
-            changePlayer();  
-        }
-    }
-    
-    // board reset
-
-    let score1 = 0; 
-    let score2 = 0; 
-    const resetBoard = (type) => {
-       
-        //show the score value for each player
-        if(announcer.innerHTML == 'Player <span class="playerO">O</span> Won'){
-            score1++;
-            scoreO.innerHTML = score1;
-        }
-        else if(announcer.innerHTML == 'Player <span class="playerX">X</span> Won'){
-            score2++;
-            scoreX.innerHTML = score2;
-        }
-
-
-        board = ['', '', '', '', '', '', '', '', ''];
-        isGameActive = true; 
-        announcer.classList.add('hide');
-    
-        if (currentPlayer==='O'){
-            changePlayer();
-        }
-        tiles.forEach(tile => {
-            tile.innerText = ''; 
-            tile.classList.remove('playerX');
-            tile.classList.remove('playerO');
-            
-        });
-    }
-
-
-   
-
-    //clicking on a tile
-    tiles.forEach((tile, index) =>{
-        tile.addEventListener('click', () => userAction(tile, index));
+        custom.addEventListener('click', ()=>{
+            totTipOutput.innerHTML = ''
+            let totBill = Number(inputBill.value)/100*50
+            let totPeople = Number(nrPersone.value)
+            totTipOutput.innerHTML =(totBill/totPeople).toFixed(2) + "€"
+        })
     })
+}
+showBill() 
 
-    //reset button
-    resetButton.addEventListener('click', resetBoard); 
+//reset button
+function reset(){
+    resetBtn.addEventListener('click', ()=>{
+        outputBill.innerHTML = '$ 0.00'
+        totTipOutput.innerHTML = '$ 0.00'
+        inputBill.value = 0
+        nrPersone.value = 0
+    })
+}
+reset ()
 
-     
-
-});
 
